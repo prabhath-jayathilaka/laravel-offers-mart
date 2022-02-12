@@ -21,6 +21,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'address',
+        'cart',
+        'orders',
+        'payments',
     ];
 
     /**
@@ -40,5 +44,9 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'address' => 'array',
+        'cart' => 'array',
+        'orders' => 'array',
+        'payments' => 'array',
     ];
 }
