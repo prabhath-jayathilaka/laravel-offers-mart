@@ -1,7 +1,7 @@
 /node_modules
 /public/hot
 /public/storage
-storage/media/images
+#storage/media/images
 /storage/*.key
 /vendor
 .env
