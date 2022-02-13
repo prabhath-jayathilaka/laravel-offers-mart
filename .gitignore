@@ -1,7 +1,25 @@
+# /node_modules
+# /public/hot
+# /public/storage/*.key
+# /public/*.key
+# /storage/*.key
+# /vendor
+# .env
+# .env.backup
+# .phpunit.result.cache
+# docker-compose.override.yml
+# Homestead.json
+# Homestead.yaml
+# npm-debug.log
+# yarn-error.log
+# /.idea
+# /.vscode
+
+
+
 /node_modules
 /public/hot
-/public/storage/*.key
-/public/*.key
+/public/storage
 /storage/*.key
 /vendor
 .env
