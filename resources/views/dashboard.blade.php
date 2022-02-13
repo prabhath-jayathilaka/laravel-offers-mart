@@ -10,14 +10,14 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <!-- Container Content -->
-
                     <div class="grid grid-rows-3 gap-8 min-h-[80%] ">
                         <div>
                             <h3 class="text-xl">Shopping</h3>
                             <div class="grid grid-cols-4 gap-4 p-5 ">
 
-                                <x-dash-link :href="route('my-cart')" ><img src="{{ asset('/storage/media/icons/shopping_cart_black_48dp.svg')}}"
-                                                                            alt="icon"> Modify Cart
+                                <x-dash-link :href="route('my-cart')"><img
+                                        src="{{ asset('/storage/media/icons/shopping_cart_black_48dp.svg')}}"
+                                        alt="icon"> Modify Cart
                                 </x-dash-link>
 
                             </div>
@@ -26,7 +26,7 @@
                         <div class="account-setting">
                             <h3 class="text-xl">Account Setting</h3>
                             <div class=" group grid grid-cols-4 gap-4 p-5">
-                                <x-dash-link :href="route('my-info')" ><img
+                                <x-dash-link :href="route('my-info')"><img
                                         src="{{ asset('/storage/media/icons/settings_accessibility_black_48dp.svg')}}"
                                         alt="">Edit personal info
                                 </x-dash-link>

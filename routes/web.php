@@ -38,6 +38,14 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/dashboard/my-orders', [UserController::class, 'indexOrders'])->name('my-orders');
     Route::get('/dashboard/my-returns', [UserController::class, 'indexReturns'])->name('my-returns');
     Route::get('/dashboard/payments', [UserController::class, 'indexTransaction'])->name('my-payments');
+
+
+    Route::put('/dashboard/my-info', [UserController::class, 'updateInfo'])->name('update-info');
+    Route::put('/dashboard/my-address', [UserController::class, 'updateAddress'])->name('update-address');
+
+    Route::get('/blank', function () {
+        return view('blank');
+    })->name('blank');
 });
 Route::get('/dashboard', function () {
     return view('dashboard');

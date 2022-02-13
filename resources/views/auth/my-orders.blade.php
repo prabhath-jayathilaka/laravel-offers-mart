@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="font-semi-bold text-xl text-gray-800 leading-tight">
             {{ __('My orders') }}
         </h2>
     </x-slot>
@@ -35,15 +35,21 @@
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">$300.00</td>
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">3</td>
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"> Delivered </span>
+                                                <span
+                                                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"> Delivered </span>
                                             </td>
-                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2022-01-16</td>
-                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2022-01-28</td>
-                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Cancel/Return </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2022-01-16
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2022-01-28
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                Cancel/Return
+                                            </td>
                                         </tr>
 
                                         </tbody>
                                     </table>
+
                                 </div>
                             </div>
                         </div>
