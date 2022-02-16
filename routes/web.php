@@ -22,7 +22,7 @@ Route::get('/', function () {
     return view('welcome');
 })->name('not-set');
 
-Route::get('/products', function () {
+Route::get('/product', function () {
     return view('pages.product');
 });
 
