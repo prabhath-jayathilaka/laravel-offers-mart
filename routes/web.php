@@ -22,10 +22,18 @@ Route::get('/', function () {
     return view('welcome');
 })->name('not-set');
 
-Route::get('/product', function () {
-    return view('pages.product');
-});
 
+/*Guest Routes*/
+
+Route::get('/product/{$slug}', function () {
+    return view('pages.product');
+})->name('product');
+
+
+Route::get('/shop', [\App\Http\Controllers\ProductController::class, 'featuredProducts'])->name('shop');
+Route::get('/shop/{slug}', [\App\Http\Controllers\ProductController::class, 'showProduct'])->name('show-product');
+
+/*Auth Routes*/
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/test', [\App\Http\Controllers\ProductController::class, 'test']);
     Route::get('/testdb', [\App\Http\Controllers\ProductController::class, 'testdb']);
@@ -48,7 +56,8 @@ Route::group(['middleware' => 'auth'], function () {
     })->name('blank');
 });
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('pages.dashboard');
 })->middleware(['auth'])->name('dashboard');
+
 
 require __DIR__ . '/auth.php';

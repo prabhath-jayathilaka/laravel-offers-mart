@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\showProduct;
 use App\Models\Product;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use Domain\Facades\ProductFacade;
 
 class ProductController extends Controller
 {
@@ -76,11 +78,28 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Product  $product
+     * @param \App\Models\Product $product
      * @return \Illuminate\Http\Response
      */
     public function destroy(Product $product)
     {
         //
     }
+
+    public function featuredProducts()
+    {
+//        return ProductFacade::featuredProduct();
+        return view('pages.products')->with('products', ProductFacade::featuredProduct());
+    }
+
+    public function showProduct($slug)
+    {
+        $product = ProductFacade::showProduct($slug);
+        $products = ProductFacade::featuredProduct();
+
+//        return view('pages.product')->with('product', ProductFacade::showProduct($slug))''
+        return view('pages.product', compact('product', 'products'));
+
+    }
+
 }
