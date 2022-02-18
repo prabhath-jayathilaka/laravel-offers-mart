@@ -15,6 +15,7 @@ class Product extends Model
         'price',
         'categories',
         'attributes',
+        'primary_image',
         'images',
         'reviews',
     ];

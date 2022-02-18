@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\searchProductsRequest;
 use App\Http\Requests\showProduct;
 use App\Models\Product;
 use App\Http\Requests\StoreProductRequest;
@@ -86,20 +87,39 @@ class ProductController extends Controller
         //
     }
 
+    //featured product
     public function featuredProducts()
     {
-//        return ProductFacade::featuredProduct();
+//        $user = ProductFacade::featuredProduct();
         return view('pages.products')->with('products', ProductFacade::featuredProduct());
     }
 
+    //product searching
+    public function searchProducts(searchProductsRequest $request)
+    {
+        $products = ProductFacade::searchProduct($request->input('keyword'));
+
+        return view('pages.search', compact('products'));
+
+    }
+
+    // show clicked product
     public function showProduct($slug)
     {
         $product = ProductFacade::showProduct($slug);
-        $products = ProductFacade::featuredProduct();
+        $products = ProductFacade::carouselfeaturedProduct();
 
-//        return view('pages.product')->with('product', ProductFacade::showProduct($slug))''
         return view('pages.product', compact('product', 'products'));
 
     }
+
+
+    // testing function
+    public function testdb($slug)
+    {
+        return ProductFacade::showProduct($slug);
+
+    }
+
 
 }

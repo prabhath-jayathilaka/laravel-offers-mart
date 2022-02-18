@@ -16,45 +16,27 @@
                         <div class=" grid grid-cols-12 product container-top">
                             <div id=" column" class="col-span-7  align-middle  p-2 ">
 
-                                <img id="featured" src="{{ asset('/storage/media/images/shoe_1.png') }} "
+                                <img alt="primary Image" img id="featured"
+                                     src="{{ asset('/storage/media/images/'.$product->primary_image) }} "
                                      class="border-2 border-gray-400 cursor-pointer min-w-[40.938rem] max-h-[39rem] object-fill align-middle rounded">
 
                                 <x-images-carousel name="productImages">
-
-                                    <img
-                                        class=" images active opacity-0.5 m-[0.313rem] border-2 border-gray-400 object-cover max-w-[11rem] max-h-[7rem] cursor-pointer "
-                                        src="{{ asset('/storage/media/images/shoe_2.png') }} ">
-                                    <img
-                                        class=" images opacity-0.5 m-[0.313rem] border-2 border-gray-400 object-cover max-w-[11rem] max-h-[7rem] cursor-pointer "
-                                        src="{{ asset('/storage/media/images/shoe_1.png') }} ">
-                                    <img
-                                        class=" thumbnail opacity-0.5 m-[0.313rem] border-2 border-gray-400 object-cover max-w-[11rem] max-h-[7rem] cursor-pointer"
-                                        src="{{ asset('/storage/media/images/shoe_3.png') }} ">
-                                    <img
-                                        class=" images opacity-0.5 m-[0.313rem] border-2 border-gray-400 object-cover max-w-[11rem] max-h-[7rem] cursor-pointer"
-                                        src="{{ asset('/storage/media/images/shoe_3.png') }} ">
-                                    <img
-                                        class=" images opacity-0.5 m-[0.313rem] border-2 border-gray-400 object-cover max-w-[11rem] max-h-[7rem] cursor-pointer"
-                                        src="{{ asset('/storage/media/images/shoe_3.png') }} ">
-                                    <img
-                                        class=" images opacity-0.5 m-[0.313rem] border-2 border-gray-400 object-cover max-w-[11rem] max-h-[7rem] cursor-pointer"
-                                        src="{{ asset('/storage/media/images/shoe_3.png') }} ">
-                                    <img
-                                        class=" images opacity-0.5 m-[0.313rem] border-2 border-gray-400 object-cover max-w-[11rem] max-h-[7rem] cursor-pointer"
-                                        src="{{ asset('/storage/media/images/shoe_4.png') }} ">
-                                    <img
-                                        class=" images opacity-0.5 m-[0.313rem] border-2 border-gray-400 object-cover max-w-[11rem] max-h-[7rem] cursor-pointer"
-                                        src="{{ asset('/storage/media/images/shoe_4.png') }} ">
-                                    <img
-                                        class=" images opacity-0.5 m-[0.313rem] border-2 border-gray-400 object-cover max-w-[11rem] max-h-[7rem] cursor-pointer"
-                                        src="{{ asset('/storage/media/images/shoe_4.png') }} ">
+                                    <img alt="primary Image"
+                                         class=" images active opacity-0.5 m-[0.313rem] border-2 border-gray-400
+                                        object-cover max-w-[11rem] max-h-[7rem] cursor-pointer "
+                                         src="{{ asset('/storage/media/images/'.$product->primary_image) }} ">
+                                    @foreach($product->images as $key=>$image)
+                                        <img alt="image gallery"
+                                             class=" images active opacity-0.5 m-[0.313rem] border-2 border-gray-400 object-cover max-w-[11rem] max-h-[7rem] cursor-pointer "
+                                             src="{{ asset('/storage/media/images/'. $image ) }} "> @endforeach
                                 </x-images-carousel>
 
                             </div>
+                            <!-- Product Details -->
                             <div class=" col-span-5  details pt-2 pl-3 pr-2 pb-2">
 
                                 <h1 class=" font-bold text-3xl text-gray-800 leading-tight ">{{$product->name}}</h1>
-
+                                <!-- Product Reviews container -->
                                 <div class="product-rating  text-yellow-400">
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
@@ -76,18 +58,20 @@
                                 </div>
 
                                 <div class="variant pt-2">
-                                    @foreach($product->attributes as $attribute)
-                                        <div class="pro-detail-wrap pt-1">
-                                            <h2 class="text-lg">{{$attribute}}:</h2>
-                                            <ul class="pl-2 flex">
-                                                <li class="pl-2 pr-2"><a href="">Red</a></li>
-                                                <li class="pl-2 pr-2"><a href="">Yellow</a></li>
-                                                <li class="pl-2 pr-2"><a href="">Blue</a></li>
+                                    @foreach($product->attributes as  $key=>$attribute)
 
+                                        <div class="pro-detail-wrap pt-1">
+                                            <h2 class="text-lg">{{ $key }} :</h2>
+                                            <ul class="pl-2 flex">
+                                                @foreach($attribute as $value)
+                                                    <li class="pl-2 pr-2 border border-gray-400 rounded ml-1"><a
+                                                            href="">{{$value}}  </a>
+                                                    </li>  @endforeach
                                             </ul>
                                         </div>
                                     @endforeach
                                 </div>
+                                <!-- user's actions for product -->
                                 <div class="action pt-5">
                                     <h2 class="text-lg">Quantity:</h2>
                                     <div class="flex w-60 items-center pl-4 pt-1 ontent-between">
@@ -130,9 +114,9 @@
 
                                 <x-product-slide-viewer href="{{ route('show-product',  $product->slug)}}">
                                     <x-slot name="image">
-                                        <img
-                                            class=" thumbnail border-1 border-gray-600  rounded object-cover w-full h-full "
-                                            ` src="{{ asset('/storage/media/images/shoe_1.png') }} ">
+                                        <img alt="Primary Image"
+                                             class=" thumbnail border-1 border-gray-600  rounded object-cover w-full h-full "
+                                             src="{{ asset('/storage/media/images/'.$product->primary_image) }} ">
                                     </x-slot>
                                     <x-slot name="title">
                                         {{  $product->name}}
@@ -152,7 +136,6 @@
                     <!--        end of recommended -->
                     <!-- end of Content -->
 
-
                 </div>
             </div>
         </div>
@@ -171,7 +154,6 @@
                 if (activeImages.length > 0) {
                     activeImages[0].classList.remove('active')
                 }
-
 
                 this.classList.add('active')
                 document.getElementById('featured').src = this.src
