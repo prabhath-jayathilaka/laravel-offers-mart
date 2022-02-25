@@ -38,9 +38,10 @@ class ProductFactory extends Factory
                 'main' => Arr::random($categories),
                 'sub' => Arr::random($sub),],
             'attributes' => [
-                'size' => ['S', 'M', 'L', 'XL'][rand(2, 3)],
+                'size' => ['S', 'M', 'L', 'XL'][random_int(2, 3)],
                 'color' => ['White', 'Black', 'Blue', 'Yellow', 'Light Green'][rand(2, 4)],
             ],
+            'primary_image' => basename($this->faker->image('storage/app/public/media/images')),
             'images' => [
                 'image1' => basename($this->faker->image('storage/app/public/media/images')),
                 'image2' => basename($this->faker->image('storage/app/public/media/images')),

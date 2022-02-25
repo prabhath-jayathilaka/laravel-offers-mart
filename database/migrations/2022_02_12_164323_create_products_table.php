@@ -21,6 +21,7 @@ return new class extends Migration
             $table->integer('price')->default(0);
             $table->json('categories')->nullable();
             $table->json('attributes')->nullable();
+            $table->string('primary_image')->nullable();
             $table->json('images')->nullable();
             $table->json('reviews')->nullable();
             $table->timestamps();
