@@ -11,10 +11,15 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     <div class="grid grid-cols-2 gap-4 p-5">
 
-                        Personal info edit page
+                        <!-- Code block starts -->
+
+
+                        <!-- Code block ends -->
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
 </x-app-layout>

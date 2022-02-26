@@ -29,68 +29,79 @@
                                 <div>
                                     <x-label for="first_name" :value="__('First Name')"></x-label>
 
-                                    <x-input id="first_name" class="block mt-1 w-full" type="text" name="first_name" :value="old('first_name')" required autofocus></x-input>
+                                    <x-input id="first_name" class="block mt-1 w-full" type="text" name="first_name"
+                                             :value="old('first_name')" required autofocus></x-input>
                                 </div>
 
                                 <div>
                                     <x-label for="last_name" :value="__('Last Name')"></x-label>
 
-                                    <x-input id="last_name" class="block mt-1 w-full" type="text" name="last_name" :value="old('last_name')" required autofocus></x-input>
+                                    <x-input id="last_name" class="block mt-1 w-full" type="text" name="last_name"
+                                             :value="old('last_name')" required autofocus></x-input>
                                 </div>
 
-                            {{--                            <!-- Address 1 -->--}}
-                            {{--                            <div>--}}
-                            {{--                                <x-label for="address_1" :value="__('Address 1')"></x-label>--}}
+                                <!-- Address 1 -->
+                                <div>
+                                    <x-label for="address_1" :value="__('Address 1')"></x-label>
 
-                            {{--                                <x-input id="address_1" class="block mt-1 w-full" type="text" name="address_1" :value="old('address_1')" required autofocus></x-input>--}}
-                            {{--                            </div>--}}
+                                    <x-input id="address_1" class="block mt-1 w-full" type="text" name="address_1"
+                                             :value="old('address_1')" required autofocus></x-input>
+                                </div>
 
-                            {{--                            <!-- Address 2 -->--}}
-                            {{--                            <div>--}}
-                            {{--                                <x-label for="address_2" :value="__('Address 2')"></x-label>--}}
+                                <!-- Address 2 -->
+                                <div>
+                                    <x-label for="address_2" :value="__('Address 2')"></x-label>
 
-                            {{--                                <x-input id="address_2" class="block mt-1 w-full" type="text" name="address_2" :value="old('address_2')"  autofocus></x-input>--}}
-                            {{--                            </div>--}}
+                                    <x-input id="address_2" class="block mt-1 w-full" type="text" name="address_2"
+                                             :value="old('address_2')" autofocus></x-input>
+                                </div>
 
-                            {{--                            <!-- city -->--}}
-                            {{--                            <div>--}}
-                            {{--                                <x-label for="city" :value="__('City')"></x-label>--}}
+                                <!-- city -->
+                                <div>
+                                    <x-label for="city" :value="__('City')"></x-label>
 
-                            {{--                                <x-input id="city" class="block mt-1 w-full" type="text" name="city" :value="old('city')"  autofocus></x-input>--}}
+                                    <x-input id="city" class="block mt-1 w-full" type="text" name="city"
+                                             :value="old('city')" autofocus></x-input>
 
-                            {{--                            </div>--}}
+                                </div>
 
-                            {{--                            <!-- Post code -->--}}
-                            {{--                            <div>--}}
-                            {{--                                <x-label for="post_code" :value="__('Post Code')"></x-label>--}}
+                                <!-- Post code -->
+                                <div>
+                                    <x-label for="post_code" :value="__('Post Code')"></x-label>
 
-                            {{--                                <x-input id="post_code" class="block mt-1 w-full" type="text" name="post_code" :value="old('post_code')"  autofocus></x-input>--}}
+                                    <x-input id="post_code" class="block mt-1 w-full" type="text" name="post_code"
+                                             :value="old('post_code')" autofocus></x-input>
 
-                            {{--                            </div>--}}
-                            {{--                            <!-- Country-->--}}
-                            {{--                            <div>--}}
-                            {{--                                <x-label for="country" :value="__('Country')"></x-label>--}}
+                                </div>
+                                <!-- Country-->
+                                <div>
+                                    <x-label for="country" :value="__('Country')"></x-label>
 
-                            {{--                                <x-input id="country" class="block mt-1 w-full" type="text" name="country" :value="old('country')"  autofocus></x-input>--}}
+                                    <x-input id="country" class="block mt-1 w-full" type="text" name="country"
+                                             :value="old('country')" autofocus></x-input>
 
-                            {{--                            </div>--}}
+                                </div>
 
-                            {{--                            <!-- State-->--}}
-                            {{--                            <div>--}}
-                            {{--                                <x-label for="state" :value="__('State')"></x-label>--}}
+                                <!-- State-->
+                                <div>
+                                    <x-label for="state" :value="__('State')"></x-label>
 
-                            {{--                                <x-input id="state" class="block mt-1 w-full" type="text" name="state" :value="old('state')"  autofocus></x-input>--}}
+                                    <x-input id="state" class="block mt-1 w-full" type="text" name="state"
+                                             :value="old('state')" autofocus></x-input>
 
-                            {{--                            </div>--}}
-                            {{--                            <!-- id default Address-->--}}
-                            {{--                            <div>--}}
+                                </div>
+                                <!-- id default Address-->
+                                <div>
 
-                            {{--                                <x-label for="state" :value="__('Default Address')">  </x-label>--}}
-                            {{--                                <input type="checkbox" name="isdefault"  value="true" class="appearance-none indeterminate:bg-gray-300" />--}}
+                                    <x-label for="state" :value="__('Default Address')"></x-label>
+                                    <label>
+                                        <input type="checkbox" name="is_default" value="true"
+                                               class="appearance-none indeterminate:bg-gray-300"/>
+                                    </label>
 
-                            {{--                            </div>--}}
+                                </div>
 
-                            <!-- Submit button-->
+                                <!-- Submit button-->
                                 <div class="flex items-center justify-end mt-4">
                                     <x-button class="ml-4">
                                         {{ __('Continue') }}

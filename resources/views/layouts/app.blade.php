@@ -29,12 +29,16 @@
                 </div>
             </header>
 
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
+                <!-- Page Content -->
+                <main>
+                    {{ $slot }}
+                </main>
         </div>
-
+        // add fontawsome
         <script src="https://kit.fontawesome.com/cd72fdde63.js" crossorigin="anonymous"></script>
+        // add jquery
+        <script src="https://ajax.googleapis.com/ajax/libs/cesiumjs/1.78/Build/Cesium/Cesium.js"></script>
+        <script src="https://unpkg.com/@themesberg/flowbite@1.2.0/dist/flowbite.bundle.js"></script>
+        @stack('script')
     </body>
 </html>

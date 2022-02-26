@@ -29,12 +29,15 @@ class UserController extends Controller
 
     public function indexOrders()
     {
-        return view('auth.my-orders');
+//        return view('auth.my-orders');
+        $orders = UserFacade::viewOrders(auth()->user());
+        return view('auth.my-orders', compact('orders'));
     }
 
     public function indexReturns()
     {
-        return view('auth.my-returns');
+        $return_orders = UserFacade::viewReturnOrders(auth()->user());
+        return view('auth.my-returns', compact('return_orders'));
     }
 
     public function indexTransaction()
@@ -42,17 +45,15 @@ class UserController extends Controller
         return view('auth.my-transaction');
     }
 
-    public function updateInfo(){
+    public function updateInfo()
+    {
         $user = auth()->user();
 
         return "Hello";
     }
 
-    public function updateAddress(UpdateAddressRequest $request){
-
-     $component =  UserFacade::updateAddress( auth()->user(), $request->all());
-
-        return redirect()->route('my-address')->with('error-message','Update Successfully');
-//        return view('blank')->with('message','from controller');
+    public function updateAddress(UpdateAddressRequest $request)
+    {
+        return redirect()->route('my-address')->with(UserFacade::updateAddress(auth()->user(), $request->except(['_method', '_token'])));
     }
 }
