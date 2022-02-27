@@ -1,4 +1,5 @@
 <x-app-layout>
+
     <x-slot name="header">
         <h2 class="font-semi-bold text-xl text-gray-800 leading-tight">
             {{ __('Personal info') }}
@@ -12,7 +13,6 @@
                     <div class="grid grid-cols-2 gap-4 p-5">
 
                         <!-- Code block starts -->
-
 
                         <!-- Code block ends -->
 

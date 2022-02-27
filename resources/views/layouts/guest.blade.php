@@ -29,6 +29,17 @@
         @include('layouts.footer')
     </div>
 
+    <!-- font awesome -->
+    <script src="https://kit.fontawesome.com/cd72fdde63.js" crossorigin="anonymous"></script>
+
+    <!-- Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <!-- script for popup modal -->
+
+    <script src="https://unpkg.com/@themesberg/flowbite@1.2.0/dist/flowbite.bundle.js"></script>
+
+    <!-- Custom Scripts -->
     @stack('script')
     </body>
 </html>

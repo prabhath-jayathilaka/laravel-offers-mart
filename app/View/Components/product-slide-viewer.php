@@ -11,9 +11,11 @@ class product-slide-viewer extends Component
      *
      * @return void
      */
-    public function __construct()
+    public $product;
+
+    public function __construct($product)
     {
-        //
+        $this->product = $product;
     }
 
     /**
