@@ -45,11 +45,7 @@ class ProductFactory extends Factory
             ],
             'primary_image' => basename($this->faker->image('storage/app/public/media/images')),
             'images' => $this->setImages(),
-            'reviews' => [
-                'user_name' => $this->faker->name(),
-                'rating' => $this->faker->numberBetween(0, 5),
-                'comment' => $this->faker->realText(50),
-            ]];
+            'reviews' => $this->setReviews()];
     }
 
 
@@ -60,5 +56,19 @@ class ProductFactory extends Factory
             $imageArray[] = basename($this->faker->image('storage/app/public/media/images'));
         }
         return $imageArray;
+    }
+
+    private function setReviews(): array
+    {
+        $reviews = [];
+        for ($i = 0; $i < 6; $i++) {
+            $review = [
+                'user_name' => $this->faker->name(),
+                'rating' => $this->faker->numberBetween(0, 5),
+                'comment' => $this->faker->realText(50),
+            ];
+            $reviews[] = $review;
+        }
+        return $reviews;
     }
 }

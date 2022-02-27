@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\addToCartRequest;
 use App\Http\Requests\searchProductsRequest;
 use App\Http\Requests\showProduct;
 use App\Models\Product;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use Domain\Facades\ProductFacade;
+use Domain\Facades\ProductReviewFacade;
 
 class ProductController extends Controller
 {
@@ -108,8 +110,8 @@ class ProductController extends Controller
     {
         $product = ProductFacade::showProduct($slug);
         $products = ProductFacade::carouselfeaturedProduct();
-
-        return view('pages.product', compact('product', 'products'));
+        $reviews = ProductReviewFacade::productReviews($slug);
+        return view('pages.product', compact('product', 'reviews', 'products'));
 
     }
 
@@ -121,5 +123,10 @@ class ProductController extends Controller
 
     }
 
+    public function addToCart(addToCartRequest $request)
+    {
+        dd($request->input());
+        return "Test";
 
+    }
 }
