@@ -13,7 +13,7 @@
                     <div class="grid grid-cols-2 gap-4 p-5">
 
                         <!-- Code block starts -->
-
+                        Personal Info
                         <!-- Code block ends -->
 
                     </div>
