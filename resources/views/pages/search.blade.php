@@ -10,32 +10,20 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-4 bg-white border-b border-gray-200">
 
-                    <div class="">
+                    <div class=" grid justify-center sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4 ">
                         <!-- Content -->
-                        @foreach($products as $product)
+                    @foreach($products as $product)
 
+                        <!-- Product viewer  -->
+                            <x-product-slide-viewer :product="$product">
 
-                            <x-product-slide-viewer href="{{ route('show-product',  $product->slug)}}">
-                                <x-slot name="image">
-                                    <img alt="product primary image"
-                                         class=" thumbnail border-1 border-gray-600  rounded object-cover w-full h-full "
-                                         src="{{ asset('/storage/media/images/'.$product->primary_image) }} ">
-                                </x-slot>
-                                <x-slot name="title">
-                                    {{  $product->name}}
-                                </x-slot>
-                                <x-slot name="newprice">
-                                    {{  $product->price/100}}
-                                </x-slot>
-                                <x-slot name="oldprice">
-                                    $ 25.00
-                                </x-slot>
                             </x-product-slide-viewer>
-                            <!-- end of Content -->
 
+                            <!-- end of Content -->
                         @endforeach
-                        {{$products->links()}}
+
                     </div>
+                    {{$products->links()}}
                 </div>
             </div>
         </div>

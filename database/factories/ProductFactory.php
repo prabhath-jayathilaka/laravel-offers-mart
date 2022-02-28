@@ -34,18 +34,19 @@ class ProductFactory extends Factory
             'slug' => $this->faker->slug(),
             'description' => $this->faker->realText(200),
             'price' => $this->faker->numberBetween(10000, 200000),
+            'old_price' => $this->faker->numberBetween(10000, 200000),
+            'quantity' => $this->faker->numberBetween(10, 300),
             'categories' => [
                 'main' => Arr::random($categories),
                 'sub' => Arr::random($sub),],
             'attributes' => [
-//                'size' => ['S', 'M', 'L', 'XL'][random_int(2, 3)],
                 'size' => ['S', 'M', 'L', 'XL'],
-//                'color' => ['White', 'Black', 'Blue', 'Yellow', 'Light Green'][rand(2, 4)],
                 'color' => ['White', 'Black', 'Blue', 'Yellow', 'Light Green'],
+                'pattern' => ['P1', 'P2', 'P3', 'P4'],
             ],
             'primary_image' => basename($this->faker->image('storage/app/public/media/images')),
-            'images' => $this->setImages(),
-            'reviews' => $this->setReviews()];
+            'images' => $this->setImages(),];
+
     }
 
 
@@ -58,17 +59,4 @@ class ProductFactory extends Factory
         return $imageArray;
     }
 
-    private function setReviews(): array
-    {
-        $reviews = [];
-        for ($i = 0; $i < 6; $i++) {
-            $review = [
-                'user_name' => $this->faker->name(),
-                'rating' => $this->faker->numberBetween(0, 5),
-                'comment' => $this->faker->realText(50),
-            ];
-            $reviews[] = $review;
-        }
-        return $reviews;
-    }
 }

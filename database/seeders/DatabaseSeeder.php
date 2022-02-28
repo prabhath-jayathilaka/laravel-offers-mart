@@ -21,13 +21,13 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
 
 //        Product::factory(15)->create();
-        User::factory(5)->create()->each(function ($user) {
+        User::factory(10)->create()->each(function ($user) {
             Order::factory(random_int(1, 4))->create([
                 'user_id' => $user->id
             ]);
         });
 
-        Product::factory(15)->create()->each(function ($product) {
+        Product::factory(50)->create()->each(function ($product) {
             ProductReviews::factory(random_int(1, 4))->create([
                 'slug' => $product->slug
             ]);

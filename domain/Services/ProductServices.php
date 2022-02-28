@@ -8,7 +8,7 @@ class ProductServices
 {
     public function featuredProduct()
     {
-        return Product::paginate(3);
+        return Product::paginate(20);
 
     }
 
@@ -27,8 +27,7 @@ class ProductServices
 
     public function searchProduct($keyword)
     {
-//        $products = Product::where('name', 'like', '%' . $keyword . '%')->get();
-        return Product::where('name', 'like', '%' . $keyword . '%')->paginate(20);
+        return Product::where('name', 'like', '%' . $keyword . '%')->orwhere('description', 'like', '%' . $keyword . '%')->orwhere('slug', 'like', '%' . $keyword . '%')->paginate(20);
 
     }
 }

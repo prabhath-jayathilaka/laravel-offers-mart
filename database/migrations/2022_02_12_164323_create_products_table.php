@@ -19,11 +19,14 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->string('description');
             $table->integer('price')->default(0);
+            $table->integer('old_price')->default(0);
+            $table->integer('quantity')->default(0);
             $table->json('categories')->nullable();
             $table->json('attributes')->nullable();
-            $table->string('primary_image')->nullable();
+            $table->string('primary_image');
             $table->json('images')->nullable();
-            $table->json('reviews')->nullable();
+            $table->json('specifications')->nullable();
+            $table->json('shipping')->nullable();
             $table->timestamps();
         });
     }

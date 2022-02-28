@@ -111,7 +111,9 @@ class ProductController extends Controller
         $product = ProductFacade::showProduct($slug);
         $products = ProductFacade::carouselfeaturedProduct();
         $reviews = ProductReviewFacade::productReviews($slug);
-        return view('pages.product', compact('product', 'reviews', 'products'));
+        $rating = ProductReviewFacade::productRating($slug);
+        
+        return view('pages.product', compact('product', 'rating', 'reviews', 'products'));
 
     }
 

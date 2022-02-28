@@ -31,6 +31,7 @@
                                     class="flex items-start justify-between p-5 border-b rounded-t dark:border-gray-600">
                                     <h3 class="text-gray-900 text-xl lg:text-xl font-semi-bold ">
                                         select Your Product Variation
+                                       
                                     </h3>
                                     <button type="button"
                                             class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
@@ -66,7 +67,12 @@
                                                      min="1" name="quantity" :value="1" required></x-input>
                                             <div
                                                 class=" ml-8 leading-5 font-semi-bold rounded-md bg-green-100 text-green-800 h-[1.73rem] flex items-center">
-                                                <P class="p-1">84 In Stock</P></div>
+                                                @if($product->quantity==0)
+                                                    <P class="p-1 bg-red-100 text-red-800">Out Stock</P>
+                                                @else <P class="p-1">{{$product->quantity}} In Stock</P>
+                                                @endif
+
+                                            </div>
                                         </div>
 
                                         <div> Share social Links</div>
@@ -90,7 +96,7 @@
             <div class=" bg-slate-300 mt-2 rounded grid place-content-center text-center  pt-2 pb-2 ">
                 <h3 class=" max-w-[13.125rem] text-base font-semi-bold truncate ...mr-1 ml-1 ">  {{  $product->name}}</h3>
                 <p class="text-lg text-red-700 font-semi-bold"> $ {{  $product->price/100}} <span
-                        class=" pl-2 text-sm text-gray-400 font-semi-bold line-through">$ 299.00</span></p>
+                        class=" pl-2 text-sm text-gray-400 font-semi-bold line-through">$ {{  $product->old_price/100}}</span></p>
 
             </div>
         </form>
