@@ -34,21 +34,29 @@ class ProductFactory extends Factory
             'slug' => $this->faker->slug(),
             'description' => $this->faker->realText(200),
             'price' => $this->faker->numberBetween(10000, 200000),
+            'old_price' => $this->faker->numberBetween(10000, 200000),
+            'quantity' => $this->faker->numberBetween(10, 300),
             'categories' => [
                 'main' => Arr::random($categories),
                 'sub' => Arr::random($sub),],
             'attributes' => [
-                'size' => ['S', 'M', 'L', 'XL'][rand(2, 3)],
-                'color' => ['White', 'Black', 'Blue', 'Yellow', 'Light Green'][rand(2, 4)],
+                'size' => ['S', 'M', 'L', 'XL'],
+                'color' => ['White', 'Black', 'Blue', 'Yellow', 'Light Green'],
+                'pattern' => ['P1', 'P2', 'P3', 'P4'],
             ],
-            'images' => [
-                'image1' => basename($this->faker->image('storage/app/public/media/images')),
-                'image2' => basename($this->faker->image('storage/app/public/media/images')),
-            ],
-            'reviews' => [
-                'user_name' => $this->faker->name(),
-                'rating' => $this->faker->numberBetween(0, 5),
-                'comment' => $this->faker->realText(50),
-            ]];
+            'primary_image' => basename($this->faker->image('storage/app/public/media/images')),
+            'images' => $this->setImages(),];
+
     }
+
+
+    private function setImages(): array
+    {
+        $imageArray = [];
+        for ($i = 0; $i < 6; $i++) {
+            $imageArray[] = basename($this->faker->image('storage/app/public/media/images'));
+        }
+        return $imageArray;
+    }
+
 }
