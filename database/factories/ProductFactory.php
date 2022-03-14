@@ -43,6 +43,7 @@ class ProductFactory extends Factory
                 'size' => ['S', 'M', 'L', 'XL'],
                 'color' => ['White', 'Black', 'Blue', 'Yellow', 'Light Green'],
                 'pattern' => ['P1', 'P2', 'P3', 'P4'],
+                'pattern2' => ['P1', 'P2', 'P3', 'P4'],
             ],
             'primary_image' => basename($this->faker->image('storage/app/public/media/images')),
             'images' => $this->setImages(),];

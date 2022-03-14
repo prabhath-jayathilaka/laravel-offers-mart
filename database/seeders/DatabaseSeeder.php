@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
             ]);
         });
 
-        Product::factory(50)->create()->each(function ($product) {
+        Product::factory(5)->create()->each(function ($product) {
             ProductReviews::factory(random_int(1, 4))->create([
                 'slug' => $product->slug
             ]);

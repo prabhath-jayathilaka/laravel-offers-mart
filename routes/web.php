@@ -18,13 +18,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('not-set');
+//Route::get('/', function () {
+//    return view('pages.home');
+//})->name('not-set');
 
 Route::get('/testdb/{slug}', [\App\Http\Controllers\ProductController::class, 'testdb']);
-/*Guest Routes*/
 
+/*Guest Routes*/
+Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/search', [\App\Http\Controllers\ProductController::class, 'searchProducts'])->name('search');
 Route::get('/shop', [\App\Http\Controllers\ProductController::class, 'featuredProducts'])->name('shop');
 Route::get('/shop/{slug}', [\App\Http\Controllers\ProductController::class, 'showProduct'])->name('show-product');
