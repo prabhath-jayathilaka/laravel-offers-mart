@@ -91,7 +91,7 @@
                                         <h2 class="text-lg">Quantity:</h2>
                                         <div class="flex w-60 items-center pl-4 pt-1 ontent-between">
                                             <x-input id="quantity" class=" border-2 mt-1 w-20 p-0" type="number"
-                                                     min="1" name="quantity" :value="1" required></x-input>
+                                                     min="1" max="{{$product->quantity}}" name="quantity" :value="1" required></x-input>
                                             <div
                                                 class=" ml-8 leading-5 font-semi-bold rounded-md bg-green-100 text-green-800 h-[1.73rem] flex items-center">
                                                 @if($product->quantity==0)

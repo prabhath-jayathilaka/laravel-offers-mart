@@ -22,7 +22,7 @@
                     <!-- cart-model  -->
 
                     <div id="add-to-cart-model" aria-hidden="true"
-                         class=" bg-gray-200 bg-opacity-75 hidden overflow-x-hidden overflow-y-auto fixed h-modal md:h-full top-4 left-0 right-0 md:inset-0 z-50 justify-center items-center">
+            `             class=" bg-gray-200 bg-opacity-75 hidden overflow-x-hidden overflow-y-auto fixed h-modal md:h-full top-4 left-0 right-0 md:inset-0 z-50 justify-center items-center">
                         <div class="relative w-full max-w-2xl px-4 h-full md:h-auto ">
                             <!-- Modal content -->
                             <div class="bg-white rounded-lg shadow relative border-2 border-gray-300 ">
@@ -31,7 +31,7 @@
                                     class="flex items-start justify-between p-5 border-b rounded-t dark:border-gray-600">
                                     <h3 class="text-gray-900 text-xl lg:text-xl font-semi-bold ">
                                         select Your Product Variation
-                                       
+
                                     </h3>
                                     <button type="button"
                                             class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
@@ -64,7 +64,7 @@
                                         <h2 class="text-lg">Quantity:</h2>
                                         <div class="flex w-60 items-center pl-4 pt-1 ontent-between">
                                             <x-input id="quantity" class=" border-2 mt-1 w-20 p-0" type="number"
-                                                     min="1" name="quantity" :value="1" required></x-input>
+                                                     min="1" max="{{$product->quantity}}"  name="quantity" :value="1" required></x-input>
                                             <div
                                                 class=" ml-8 leading-5 font-semi-bold rounded-md bg-green-100 text-green-800 h-[1.73rem] flex items-center">
                                                 @if($product->quantity==0)

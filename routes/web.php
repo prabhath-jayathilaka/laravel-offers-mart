@@ -39,6 +39,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/my-cart', [CartController::class, 'indexCart'])->name('my-cart');
     Route::get('/check-out', [CheckoutController::class, 'index'])->name('check-out');
+    Route::post('/check-out', [CheckoutController::class, 'indexRequest'])->name('check-out');
+    Route::post('/make-order', [CheckoutController::class, 'makeOrder'])->name('make-order');
 
     Route::get('/dashboard/my-info', [UserController::class, 'indexPersonalInfo'])->name('my-info');
     Route::get('/dashboard/my-address', [UserController::class, 'indexAddress'])->name('my-address');
