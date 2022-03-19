@@ -11,10 +11,7 @@ class UserController extends Controller
 {
 
 
-    public function indexCart()
-    {
-        return view('auth.my-cart');
-    }
+
 
     public function indexPersonalInfo()
     {

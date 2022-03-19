@@ -37,8 +37,8 @@
 
     <!-- script for popup modal -->
 
-    <script src="https://unpkg.com/@themesberg/flowbite@1.2.0/dist/flowbite.bundle.js"></script>
-
+    <script src="../path/to/flowbite/dist/flowbite.js"></script>
+    <script src="https://unpkg.com/flowbite@1.3.4/dist/flowbite.js"></script>
     <!-- Custom Scripts -->
     @stack('script')
     </body>

@@ -18,26 +18,27 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('not-set');
+//Route::get('/', function () {
+//    return view('welcome');
+//})->name('not-set');
 
 Route::get('/testdb/{slug}', [\App\Http\Controllers\ProductController::class, 'testdb']);
 /*Guest Routes*/
-
+Route::get('/', [\App\Http\Controllers\HomeController::class, 'featuredProducts'])->name('not-set');
 Route::get('/search', [\App\Http\Controllers\ProductController::class, 'searchProducts'])->name('search');
 Route::get('/shop', [\App\Http\Controllers\ProductController::class, 'featuredProducts'])->name('shop');
 Route::get('/shop/{slug}', [\App\Http\Controllers\ProductController::class, 'showProduct'])->name('show-product');
-Route::post('/shop/add-to-cart', [\App\Http\Controllers\ProductController::class, 'addToCart'])->name('add-to-cart');
+
 
 
 /*Auth Routes*/
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/test', [\App\Http\Controllers\ProductController::class, 'test']);
 
+    Route::post('/shop/add-to-cart', [CartController::class, 'addToCart'])->name('add-to-cart');
 
+    Route::get('/my-cart', [CartController::class, 'indexCart'])->name('my-cart');
     Route::get('/check-out', [CheckoutController::class, 'index'])->name('check-out');
-    Route::get('/my-cart', [UserController::class, 'indexCart'])->name('my-cart');
 
     Route::get('/dashboard/my-info', [UserController::class, 'indexPersonalInfo'])->name('my-info');
     Route::get('/dashboard/my-address', [UserController::class, 'indexAddress'])->name('my-address');
@@ -53,6 +54,7 @@ Route::group(['middleware' => 'auth'], function () {
         return view('blank');
     })->name('blank');
 });
+
 Route::get('/dashboard', function () {
     return view('pages.dashboard');
 })->middleware(['auth'])->name('dashboard');

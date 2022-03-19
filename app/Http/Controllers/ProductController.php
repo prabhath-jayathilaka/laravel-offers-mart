@@ -112,7 +112,7 @@ class ProductController extends Controller
         $products = ProductFacade::carouselfeaturedProduct();
         $reviews = ProductReviewFacade::productReviews($slug);
         $rating = ProductReviewFacade::productRating($slug);
-        
+
         return view('pages.product', compact('product', 'rating', 'reviews', 'products'));
 
     }
@@ -125,10 +125,5 @@ class ProductController extends Controller
 
     }
 
-    public function addToCart(addToCartRequest $request)
-    {
-        dd($request->input());
-        return "Test";
 
-    }
 }

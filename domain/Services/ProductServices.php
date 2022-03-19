@@ -12,6 +12,18 @@ class ProductServices
 
     }
 
+
+    public function OnSaleProducts()
+    {
+        return Product::inRandomOrder()->paginate(20);
+    }
+
+    public function newArrivals()
+    {
+        return Product::inRandomOrder()->paginate(20);
+
+    }
+
     public function carouselfeaturedProduct()
     {
         return Product::paginate(10);
