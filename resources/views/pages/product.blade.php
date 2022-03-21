@@ -104,7 +104,7 @@
 
                                         </div>
                                     </div>
-                                    <div class="buttons pt-5 w-full align-middle">
+                                    <div class="buttons pt-5 w-3/4 flex justify-between align-middle ">
                                         <x-button type="submit" class=" text-[1rem] h-10" id="add-to-cart">
                                             {{ __('Add to Cart') }}
                                         </x-button>
@@ -112,8 +112,11 @@
                                             <x-button class=" text-[1rem] h-10 " type="submit" id="checkout" >
                                                 {{ __('Checkout') }}
                                             </x-button>
+
                                     </div>
-                                    <div> Share social Links</div>
+                                    <div class="pt-5 ">
+                                        <h3 class="text-m mb-3">Share On</h3>
+                                        <x-social-media-icons></x-social-media-icons></div>
                                 </form>
 
                         </div>

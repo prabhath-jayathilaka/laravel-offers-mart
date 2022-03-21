@@ -21,21 +21,27 @@
     </head>
     <body class="font-sans antialiased">
     <div class="min-h-screen bg-gray-100">
-    @include('layouts.navigation')
+        <div>
+            @include('layouts.header')
+        </div>
+
 
     <!-- Page Heading -->
-        <header class="bg-white shadow">
-            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                {{ $header }}
-            </div>
-        </header>
+
+{{--        <header class="bg-white shadow">--}}
+{{--            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">--}}
+{{--                {{ $header }}--}}
+{{--            </div>--}}
+{{--        </header>--}}
 
         <!-- Page Content -->
         <main>
             {{ $slot }}
         </main>
     </div>
-
+    <div>
+        @include('layouts.footer')
+    </div>
     <!-- font awesome -->
     <script src="https://kit.fontawesome.com/cd72fdde63.js" crossorigin="anonymous"></script>
 
