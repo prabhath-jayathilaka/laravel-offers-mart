@@ -20,7 +20,8 @@ class CartController extends Controller
     public function addToCart(addToCartRequest $request)
     {
 
-      dd(  CartFacade::addToCart( auth()->user(),$request->except('_method',)));
+//      dd(  CartFacade::addToCart( auth()->user(),$request->except('_method',)));
+      return CartFacade::addToCart( auth()->user(),$request->except('_method',));
 
     }
 }

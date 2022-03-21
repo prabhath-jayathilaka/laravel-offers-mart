@@ -36,7 +36,8 @@
                             <!-- End of product image container -->
                             <!-- Product Details -->
                             <div class=" col-span-5  details pt-2 pl-4 pr-2 pb-2  ">
-                                <form method="POST" action="{{ route('add-to-cart') }}">
+{{--                                <form method="POST" id="frm-addto-cart" action="{{ route('add-to-cart') }}">--}}
+                                <form method="POST" id="frm-addto-cart" >
                                     @method('POST')
                                     @csrf
                                     <input type="hidden" name="product_id" value="{{$product->id}}">
@@ -104,18 +105,17 @@
                                         </div>
                                     </div>
                                     <div class="buttons pt-5 w-full align-middle">
-                                        <x-button type="submit" class=" text-[1rem] h-10">
+                                        <x-button type="submit" class=" text-[1rem] h-10" id="add-to-cart">
                                             {{ __('Add to Cart') }}
                                         </x-button>
-                                        <a href="{{ route('check-out') }}">
-                                            <x-button class=" text-[1rem] h-10 " type="button">
+
+                                            <x-button class=" text-[1rem] h-10 " type="submit" id="checkout" >
                                                 {{ __('Checkout') }}
                                             </x-button>
-                                        </a>
                                     </div>
                                     <div> Share social Links</div>
-                            </div>
-                            </form>
+                                </form>
+
                         </div>
 
 
@@ -226,6 +226,44 @@
             })
         }
         console.log('product')
+
     </script>
+    @push('script')
+        <script>
+            $( document ).ready(function() {
+                console.log( "ready!" );
+            });
+
+            $('#frm-addto-cart').submit(function (event) {
+                event.preventDefault();
+
+                console.log($(document.activeElement).attr('id'));
+                if($(document.activeElement).attr('id')==='add-to-cart') {
+                    $.ajax({
+                        url: "{{ route('add-to-cart') }}",
+                        data: $('#frm-addto-cart').serialize(),
+                        type: 'post',
+                        success: function (result) {
+                            alert(result);
+
+                        }
+                    });
+
+                } else if($(document.activeElement).attr('id')==='checkout') {
+                    $.ajax({
+                        url: "{{ route('add-to-cart') }}",
+                        data: $('#frm-addto-cart').serialize(),
+                        type: 'post',
+                        success: function (result) {
+                            window.location ="{{ route('my-cart') }}";
+                        }
+                    });
+                }
+
+
+            });
+
+        </script>
+    @endpush
 </x-guest-layout>
 
