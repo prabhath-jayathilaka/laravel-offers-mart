@@ -57,8 +57,7 @@
                                             @foreach( $cart_items as $item)
                                                 <tr>
                                                     <td class="px-6 pr-0 py-4 whitespace-nowrap text-sm text-gray-500">
-                                                        <input
-                                                            type="checkbox" name="{{$item->id}}"></td>
+                                                        <input type="checkbox" name="{{$item->cart_id}}"></td>
 
                                                     <td class="px-6 py-4 whitespace-nowrap">
                                                         <div class="flex items-center">
@@ -94,6 +93,7 @@
                                                         @else <span
                                                             class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"> {{$item->quantity}} InStock</span>
 
+
                                                         @endif
                                                     </td>
                                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
@@ -110,7 +110,7 @@
                                         </table>
 
                                         <div class="grid justify-end m-2">
-                                            <x-button class=" text-[.8rem] h-10 " type="submit">
+                                            <x-button class=" text-[.8rem] h-10 " type="submit" id="submit">
                                                 {{ __('Checkout') }}
                                             </x-button>
                                         </div>
@@ -124,4 +124,18 @@
             </div>
         </div>
     </div>
+    @push('script')
+        <script>
+            $('#submit').prop("disabled", true);
+            $('input:checkbox').click(function() {
+                if ($(this).is(':checked')) {
+                    $('#submit').prop("disabled", false);
+                } else {
+                    if ($('.checks').filter(':checked').length < 1){
+                        $('#submit').attr('disabled',true);}
+                }
+            });
+        </script>
+    @endpush
 </x-app-layout>
+

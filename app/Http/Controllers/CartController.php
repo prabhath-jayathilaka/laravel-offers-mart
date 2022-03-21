@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
+
     public function indexCart()
     {
         $cart_items =CartFacade::indexCart(auth()->user());
@@ -19,11 +20,7 @@ class CartController extends Controller
     public function addToCart(addToCartRequest $request)
     {
 
-      dd(  CartFacade::addToCart( auth()->user(),$request->except('_method','_token')));
-//        redirect();
-
-
-//        return "Test";
+      dd(  CartFacade::addToCart( auth()->user(),$request->except('_method',)));
 
     }
 }
