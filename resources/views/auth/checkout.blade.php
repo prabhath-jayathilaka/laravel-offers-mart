@@ -10,7 +10,15 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
 
-                    <form method="POST" action="{{ route('make-order') }}">
+                    @if ( session('success-message'))
+                        <x-success-message> {{session('success-message')}}</x-success-message>
+                    @endif
+                    @if ( session('error-message'))
+                        <x-error-message> {{session('error-message')}}</x-error-message>
+                        @endif
+
+{{--                    <form id="frm-make-order" method="POST" action="{{ route('make-order') }}">--}}
+                    <form id="frm-make-order" method="POST">
                         @method('POST')
                         @csrf
                     <div class="flex justify-around">
@@ -25,7 +33,7 @@
                             <h4 class="font-medium text-xl font-black mb-4">Shipping Method</h4>
                            <div>
                                <label>
-                                   <x-input type="radio" name="shippingMethod" value="promtx"></x-input>
+                                   <x-input type="radio" name="shippingMethod" value="promtx" ></x-input>
                                    PromtX
                                </label>
                            </div>
@@ -86,7 +94,7 @@
                                 </tr>
                                 </thead>
                                 <tbody class="bg-white divide-y divide-gray-200">
-                                @foreach( $cart_items as $item)
+                                @foreach( $checkout['selectedItems'] as $item)
 
                                     <tr>
 {{--                                        <td class="px-6 pr-0 py-4 whitespace-nowrap text-sm text-gray-500"><input--}}
@@ -94,22 +102,29 @@
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             <div class="flex items-center">
                                                 <div class="flex-shrink-0 h-10 w-10">
-                                                    <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60" alt="">
+                                                    <img class="h-10 w-10 rounded-full" src="{{ asset('/storage/media/images/'.$item->primary_image) }} " alt="">
                                                 </div>
                                                 <div class="ml-4">
-                                                    <div class="text-sm font-medium text-gray-900">Jane Cooper</div>
-                                                    <div class="text-sm text-gray-500">jane.cooper@example.com</div>
+                                                    <div
+                                                        class="text-sm font-medium text-gray-900">{{$item->name}}</div>
+                                                    <a href="#" class="text-sm text-gray-500"></a>
+
                                                 </div>
+
                                             </div>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
-                                            <div class="text-sm text-gray-900">Regional Paradigm Technician</div>
-                                            <div class="text-sm text-gray-500">Optimization</div>
+                                            @foreach(  json_decode($item->item_list) as  $key=>$prop)
+                                                <div class="text-sm text-gray-900 uppercase ">{{$key}} :
+                                                    <span class="text-sm text-gray-600">{{$prop}}</span>
+                                                </div>
+
+                                            @endforeach
                                         </td>
 
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">$200.00</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">$400.00</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">$ {{$item->price/100}}</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{$item->quantity}}</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">$ {{$item->price *$item->quantity /100 }}</td>
 
                                     </tr>
 
@@ -120,9 +135,9 @@
                         </div>
 
                         <div class="text-right grid justify-items-end pr-6" >
-                            <p class="m-1"><span class="text-lg font-bold text-indigo-600" >SubTotal : </span>$1200.00</p>
-                            <p class="m-1" ><span class="text-lg font-bold text-indigo-600">Discount : </span>$50.60</p>
-                            <p class="m-1"><span class="text-lg font-bold text-indigo-600">Total : </span>$1149.40</p>
+                            <p class="m-1"><span class="text-lg font-bold text-indigo-600" >SubTotal : </span>S {{$checkout['sub_total']/100}}</p>
+                            <p class="m-1" ><span class="text-lg font-bold text-indigo-600">Discount : </span>$ {{$checkout['discount']/100}}</p>
+                            <p class="m-1"><span class="text-lg font-bold text-indigo-600">Total : </span>$ {{$checkout['total']/100}}</p>
                         </div>
                         <x-button  data-modal-toggle="card-payment-model" type="button" >Proceed</x-button>
                     </div>
@@ -158,29 +173,29 @@
 
                                         </div>
                                         <div class="m-1">
-                                            <x-label for="expire-date" :value="__('Expire-date')"></x-label>
+                                            <x-label  for="expire-date" :value="__('Expire-date')"></x-label>
 
-                                            <x-input id="expire-date" class="block mt-1 w-full" type="text" name="expire-date"
+                                            <x-input  id="expire-date" class="block mt-1 w-full" type="text" name="expire-date"
                                                      :value="old('expire-date')" autofocus></x-input>
 
                                         </div>
                                         <div class="m-1">
                                             <x-label for="csv" :value="__('CSV')"></x-label>
 
-                                            <x-input maxlength="3" id="csv" class="block mt-1 w-full" type="password" name="csv"
+                                            <x-input  maxlength="3" id="csv" class="block mt-1 w-full" type="password" name="csv"
                                                      :value="old('csv')" autofocus></x-input>
 
                                         </div>
 
                                         <div class="m-1 flex justify-between pt-4">
-                                            <p class="m-1"><span class="text-lg font-bold text-indigo-600">Amount : </span>$1149.40</p>
+                                            <p class="m-1"><span class="text-lg font-bold text-indigo-600">Amount : </span>$ {{$checkout['total']/100}}</p>
                                         </div>
 
                                     </div>
                                 </div>
                                 <!-- Modal footer -->
                                 <div class="flex space-x-2 items-center p-6 border-t border-gray-200 rounded-b border-gray-600">
-                                    <button data-modal-toggle="card-payment-model" type="submit"
+                                    <button id="confirm" type="submit"
                                             class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                         Confirm
                                     </button>
@@ -232,5 +247,25 @@
 
         </div>
     </div>
+@push('script')
+        <script>
+            $( document ).ready(function() {
+                console.log( "ready!" );
+            });
 
+            $('#frm-make-order').submit(function (event) {
+                event.preventDefault();
+                console.log("fire");
+   $.ajax({
+       url:"{{ route('make-order') }}",
+       data: $('#frm-make-order').serialize(),
+       type:'post',
+       success: function (result) {
+           alert(result)
+           window.location ="{{ route('my-cart') }}";
+       }
+   });
+            })
+        </script>
+    @endpush
 </x-app-layout>
