@@ -86,32 +86,40 @@
     </div>
 
 <x-company-services></x-company-services>
+
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-4 bg-red-300">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg bg-green-300">
-                <div class="py-4 px-1 bg-white border-b border-gray-200 bg-blue-300">
+
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-4 ">
+
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg ">
+
+                <div class="py-4 px-1 bg-white border-b border-gray-200 ">
+                    <p class="ml-8 text-3xl leading-8 font-extrabold  uppercase tracking-tight text-gray-900 sm:text-2xl ">
+                        Featured Products</p>
                     <!-- product tabs-->
                     <div class="w-full">
+
                         <div class="mb-4 border-b border-gray-200 dark:border-gray-700">
+
                             <ul class="flex flex-wrap  justify-end -mb-px" id="myTab" data-tabs-toggle="#myTabContent"
                                 role="tablist">
                                 <li class="mr-2" role="presentation">
                                     <button
-                                        class="inline-block py-4 px-4 text-sm font-medium text-center text-gray-500 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:text-gray-400 dark:hover:text-gray-300"
+                                        class="inline-block py-4 px-4 text-md font-medium text-center text-gray-500 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:text-gray-400 dark:hover:text-gray-300"
                                         id="profile-tab" data-tabs-target="#profile" type="button" role="tab"
                                         aria-controls="profile" aria-selected="false">Trending
                                     </button>
                                 </li>
                                 <li class="mr-2" role="presentation">
                                     <button
-                                        class="inline-block py-4 px-4 text-sm font-medium text-center text-gray-500 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:text-gray-400 dark:hover:text-gray-300 active"
+                                        class="inline-block py-4 px-4 text-md font-medium text-center text-gray-500 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:text-gray-400 dark:hover:text-gray-300 active"
                                         id="dashboard-tab" data-tabs-target="#dashboard" type="button" role="tab"
                                         aria-controls="dashboard" aria-selected="true">On Sale
                                     </button>
                                 </li>
                                 <li class="mr-2" role="presentation">
                                     <button
-                                        class="inline-block py-4 px-4 text-sm font-medium text-center text-gray-500 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:text-gray-400 dark:hover:text-gray-300"
+                                        class="inline-block py-4 px-4 text-md font-medium text-center text-gray-500 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:text-gray-400 dark:hover:text-gray-300"
                                         id="settings-tab" data-tabs-target="#settings" type="button" role="tab"
                                         aria-controls="settings" aria-selected="false">New Arrivals
                                     </button>
@@ -119,7 +127,9 @@
 
                             </ul>
                         </div>
+
                         <div id="myTabContent">
+
                             <div class="hidden p-4 bg-gray-50 rounded-lg dark:bg-gray-800" id="profile" role="tabpanel"
                                  aria-labelledby="profile-tab">
                                 <div
@@ -143,7 +153,7 @@
                                 <div
                                     class=" grid justify-center sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4 ">
                                     <!-- Content -->
-                                @foreach($trendingProducts as $product)
+                                @foreach($OnSaleProducts as $product)
 
                                     <!-- Product viewer  -->
                                         <x-product-slide-viewer :product="$product">
@@ -194,6 +204,8 @@
                     </div>
                     <!-- end of cta section -->
                     <!-- blog post -->
+                    <p class="ml-8 mt-8 text-3xl leading-8 font-extrabold  uppercase tracking-tight text-gray-900 sm:text-2xl ">
+                        Blog Posts</p>
                     <div class="flex mt-8 pt-4 justify-around">
                         <x-blog-post></x-blog-post>
                         <x-blog-post></x-blog-post>

@@ -23,7 +23,7 @@ class ProductServices
     public function newArrivals()
     {
         return Product::inRandomOrder()->paginate(20);
-//        return Product::paginate(20);
+
     }
 
     public function carouselfeaturedProduct()
