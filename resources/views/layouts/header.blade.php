@@ -115,4 +115,5 @@
 
     </div>
     <div class="bg-slate-300 w-full h-0.5">
+    </div>
 </header>
