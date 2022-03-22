@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Route;
 //    return view('welcome');
 //})->name('not-set');
 
+
 Route::get('/testdb/{slug}', [\App\Http\Controllers\ProductController::class, 'testdb']);
 /*Guest Routes*/
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'featuredProducts'])->name('not-set');
@@ -29,7 +30,16 @@ Route::get('/search', [\App\Http\Controllers\ProductController::class, 'searchPr
 Route::get('/shop', [\App\Http\Controllers\ProductController::class, 'featuredProducts'])->name('shop');
 Route::get('/shop/{slug}', [\App\Http\Controllers\ProductController::class, 'showProduct'])->name('show-product');
 
+Route::get('/contact-us', function () {
+    return view('pages.contact-us');
+})->name('contact-us');
 
+Route::get('/about-us', function () {
+    return view('pages.about-us');
+})->name('about-us');
+Route::get('/blog', function () {
+    return view('pages.blog');
+})->name('blog');
 
 /*Auth Routes*/
 Route::group(['middleware' => 'auth'], function () {
