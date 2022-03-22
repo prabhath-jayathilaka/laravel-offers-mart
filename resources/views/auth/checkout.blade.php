@@ -175,19 +175,19 @@
                                         <div class="m-1">
                                             <x-label  for="expire-date" :value="__('Expire-date')"></x-label>
 
-                                            <x-input  id="expire-date" class="block mt-1 w-full" type="text" name="expire-date"
+                                            <x-input  required  id="expire-date" class="block mt-1 w-full" type="text" name="expire-date"
                                                      :value="old('expire-date')" autofocus></x-input>
 
                                         </div>
                                         <div class="m-1">
                                             <x-label for="csv" :value="__('CSV')"></x-label>
 
-                                            <x-input  maxlength="3" id="csv" class="block mt-1 w-full" type="password" name="csv"
+                                            <x-input required  maxlength="3" id="csv" class="block mt-1 w-full" type="password" name="csv"
                                                      :value="old('csv')" autofocus></x-input>
 
                                         </div>
 
-                                        <div class="m-1 flex justify-between pt-4">
+                                        <div  required class="m-1 flex justify-between pt-4">
                                             <p class="m-1"><span class="text-lg font-bold text-indigo-600">Amount : </span>$ {{$checkout['total']/100}}</p>
                                         </div>
 
