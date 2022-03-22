@@ -1,5 +1,5 @@
 <header class="">
-    <div class="w-full text-center bg-slate-300 p-2" ><h2 class="text-xl">Enjoy Shopping</h2></div>
+    <div class="w-full text-center bg-slate-300 p-2" ><h2 class="text-xl">Enjoy Shopping...</h2></div>
 
     <nav class=" border-gray-300  px-2 sm:px-4 py-2.5  dark:bg-gray-800">
 
