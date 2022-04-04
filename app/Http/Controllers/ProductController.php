@@ -2,9 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\addToCartRequest;
+use App\Http\Requests\searchProductsRequest;
+use App\Http\Requests\showProduct;
 use App\Models\Product;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use Domain\Facades\ProductFacade;
+use Domain\Facades\ProductReviewFacade;
 
 class ProductController extends Controller
 {
@@ -76,11 +81,49 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Product  $product
+     * @param \App\Models\Product $product
      * @return \Illuminate\Http\Response
      */
     public function destroy(Product $product)
     {
         //
     }
+
+    //featured product
+    public function featuredProducts()
+    {
+//        $user = ProductFacade::featuredProduct();
+        return view('pages.products')->with('products', ProductFacade::featuredProduct());
+    }
+
+    //product searching
+    public function searchProducts(searchProductsRequest $request)
+    {
+        $products = ProductFacade::searchProduct($request->input('keyword'));
+
+        return view('pages.search', compact('products'));
+
+    }
+
+    // show clicked product
+    public function showProduct($slug)
+    {
+        $product = ProductFacade::showProduct($slug);
+        $products = ProductFacade::carouselfeaturedProduct();
+        $reviews = ProductReviewFacade::productReviews($slug);
+        $rating = ProductReviewFacade::productRating($slug);
+
+        return view('pages.product', compact('product', 'rating', 'reviews', 'products'));
+
+    }
+
+
+    // testing function
+    public function testdb($slug)
+    {
+        return ProductFacade::showProduct($slug);
+
+    }
+
+
 }
